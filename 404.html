@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali 的印度私房料理 | 花蓮道地印度咖哩、坦都里烤雞、手工烤餅</title>
+    <meta name="description" content="Ali 的印度私房料理位於花蓮市區，由熟悉印度飲食文化的主廚每日現做，主打香料現炒咖哩、坦都里烤雞與手工烤餅。道地風味，香氣十足，適合聚餐與放鬆。">
+    <meta name="keywords" content="花蓮印度料理, 花蓮咖哩, Ali 的印度私房料理, 坦都里烤雞, 手工烤餅, 花蓮美食">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ali 的印度私房料理 | 花蓮道地印度咖哩">
+    <meta property="og:description" content="主打香料現炒咖哩、坦都里烤雞與手工烤餅。道地風味，香氣十足。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://5888.github.io/ali-indian-cuisine/">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <!-- 
+    【Stitch Design MD: Ali 的印度私房料理 設計基準】
+    - 產業分析：印度異國料理，強調香料、熱情、道地與手工感。
+    - 色彩規範：
+        --primary: #D2691E (肉桂棕/香料色，象徵溫暖與香料)
+        --secondary: #FFD700 (薑黃金，象徵印度色彩與豐富度)
+        --accent: #8B0000 (深紅，象徵熱情與坦都里烤雞)
+        --background: #FFFBF5 (米白，象徵乾淨與舒適)
+        --foreground: #2C2C2C (深灰，提升閱讀質感)
+    - 字體選擇：
+        Display: 'Playfair Display', serif (優雅且具張力)
+        Body: 'Noto Sans TC', sans-serif (清晰易讀)
+    - UX 風格：Bolder (大膽留白、強烈對比) & Delight (柔和陰影、微動效)
+    -->
+
+    <style>
+        :root {
+            --primary: #D2691E;
+            --secondary: #FFD700;
+            --accent: #8B0000;
+            --background: #FFFBF5;
+            --foreground: #2C2C2C;
+            --muted: #6B7280;
+            --radius: 1rem;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-title {
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--background);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        /* Bento Grid Customization */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 200px;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: auto;
+            }
+        }
+
+        .bento-item-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .bento-item-tall {
+            grid-row: span 2;
+        }
+
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Ali 的印度私房料理",
+      "image": "https://scontent.fkhh1-2.fna.fbcdn.net/v/t39.30808-6/488665614_122100863912866663_3415444654625514152_n.jpg",
+      "@id": "https://maps.app.goo.gl/cfjwioL8QsjRMMkKA",
+      "url": "https://5888.github.io/ali-indian-cuisine/",
+      "telephone": "+886 3 832 2285",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "民國路129號",
+        "addressLocality": "花蓮市",
+        "addressRegion": "花蓮縣",
+        "postalCode": "970",
+        "addressCountry": "TW"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 23.9793066,
+        "longitude": 121.606186
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "11:00",
+          "closes": "14:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "17:00",
+          "closes": "21:00"
+        }
+      ],
+      "servesCuisine": "Indian"
+    }
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 w-full z-50 px-6 py-4">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center glass-card px-8 py-4 rounded-full shadow-lg">
+            <div class="text-2xl font-bold tracking-tighter text-[var(--primary)]">Ali's Indian</div>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#about" class="hover:text-[var(--primary)] transition-colors">品牌故事</a>
+                <a href="#services" class="hover:text-[var(--primary)] transition-colors">美味餐點</a>
+                <a href="#faq" class="hover:text-[var(--primary)] transition-colors">常見問題</a>
+                <a href="#contact" class="hover:text-[var(--primary)] transition-colors">聯絡我們</a>
+            </div>
+            <a href="tel:+88638322285" class="bg-[var(--primary)] text-white px-6 py-2 rounded-full font-bold hover:opacity-90 transition-opacity shadow-md" aria-label="撥打電話預約">立即預約</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-gradient-to-r from-[var(--background)] via-transparent to-transparent z-10"></div>
+                <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&q=80&w=2000" alt="印度香料背景" class="w-full h-full object-cover opacity-20">
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-20 grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <span class="inline-block px-4 py-1 bg-[var(--secondary)] text-[var(--accent)] rounded-full text-sm font-bold tracking-widest uppercase">Authentic Indian Cuisine</span>
+                    <h1 class="hero-title text-6xl md:text-8xl font-black text-[var(--foreground)]">
+                        舌尖上的<br>
+                        <span class="text-[var(--primary)]">香料交響曲</span>
+                    </h1>
+                    <p class="text-xl text-[var(--muted)] max-w-md leading-relaxed">
+                        在花蓮遇見最純粹的印度風味。由主廚 Ali 親手調配的香料，為您呈現現炒咖哩與手工烤餅的極致誘惑。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#services" class="bg-[var(--primary)] text-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all text-center" aria-label="查看菜單">探索美味</a>
+                        <a href="#contact" class="bg-white text-[var(--foreground)] border-2 border-[var(--foreground)] px-10 py-4 rounded-2xl font-bold text-lg hover:bg-[var(--foreground)] hover:text-white transition-all text-center" aria-label="查看位置">查看地圖</a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-[var(--secondary)] rounded-[3rem] rotate-3 opacity-20 blur-2xl"></div>
+                    <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&q=80&w=1000" alt="美味的印度咖哩" class="relative rounded-[2.5rem] shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-32 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-20">
+                    <div class="md:w-1/2 relative">
+                        <div class="absolute top-0 left-0 text-[15rem] font-black text-[var(--background)] -translate-x-20 -translate-y-20 select-none">Ali</div>
+                        <blockquote class="relative z-10">
+                            <p class="text-3xl md:text-4xl font-serif italic leading-snug text-[var(--foreground)]">
+                                「香料不只是調味，它是印度料理的靈魂，每一道菜都是一份誠摯的邀請。」
+                            </p>
+                            <footer class="mt-6 text-[var(--primary)] font-bold">— 主廚 Ali</footer>
+                        </blockquote>
+                    </div>
+                    <div class="md:w-1/2 space-y-6">
+                        <h2 class="text-4xl font-bold text-[var(--accent)]">品牌故事</h2>
+                        <p class="text-lg text-[var(--muted)] leading-relaxed">
+                            Ali's Indian Cuisine 是一間位於花蓮市區的印度料理餐廳，主打香料現炒咖哩、坦都里烤雞與手工烤餅等經典風味。料理由熟悉印度飲食文化的主廚每日現做，講究香料比例與風味層次，讓每一口都吃得出香氣與誠意。
+                        </p>
+                        <p class="text-lg text-[var(--muted)] leading-relaxed">
+                            我們提供內用與外帶服務，空間簡單舒適，適合朋友聚餐或獨自放鬆。在這裡，我們不只是提供食物，更是分享一段關於香料與熱情的旅程。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section (Bento Box) -->
+        <section id="services" class="py-32 bg-[var(--background)]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-5xl font-bold mb-4">經典美味</h2>
+                    <p class="text-[var(--muted)] text-lg">每一道料理都是主廚的私房傑作</p>
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Item 1: Large -->
+                    <div class="bento-item-large relative overflow-hidden rounded-[2rem] group shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1517244681291-4d9d5ddad26e?auto=format&fit=crop&q=80&w=800" alt="印度現炒咖哩" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
+                            <h3 class="text-3xl font-bold text-white mb-2">香料現炒咖哩</h3>
+                            <p class="text-white/80">多達 20 種香料調配，層次豐富的味覺饗宴。</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Tall -->
+                    <div class="bento-item-tall relative overflow-hidden rounded-[2rem] group shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&q=80&w=600" alt="坦都里烤雞" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
+                            <h3 class="text-2xl font-bold text-white mb-2">坦都里烤雞</h3>
+                            <p class="text-white/80">經典窯烤，鮮嫩多汁。</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="relative overflow-hidden rounded-[2rem] group shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&q=80&w=600" alt="手工烤餅" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+                            <h3 class="text-xl font-bold text-white">手工烤餅 Naan</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="relative overflow-hidden rounded-[2rem] group shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&q=80&w=600" alt="印度拉茶" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+                            <h3 class="text-xl font-bold text-white">印度拉茶 Chai</h3>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Tall -->
+                    <div class="bento-item-tall relative overflow-hidden rounded-[2rem] group shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1633383718081-22ac93e3dbf1?auto=format&fit=crop&q=80&w=600" alt="印度脆球" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
+                            <h3 class="text-2xl font-bold text-white mb-2">印度脆球 Pani Puri</h3>
+                            <p class="text-white/80">街頭經典，一口爆發的驚喜。</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="bento-item-large relative overflow-hidden rounded-[2rem] group shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&q=80&w=800" alt="印度香料飯" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
+                            <h3 class="text-3xl font-bold text-white mb-2">印度香料飯 Biryani</h3>
+                            <p class="text-white/80">長米與香料的完美融合。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-32 bg-white">
+            <div class="max-w-3xl mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-16">常見問題</h2>
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="accordion-item border-2 border-[var(--background)] rounded-2xl overflow-hidden">
+                        <button class="w-full px-8 py-6 flex justify-between items-center bg-[var(--background)] hover:bg-white transition-colors" onclick="toggleAccordion(this)">
+                            <span class="text-lg font-bold">是否有提供素食選項？</span>
+                            <svg class="accordion-icon w-6 h-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-8 py-6 text-[var(--muted)]">
+                                是的，我們提供多樣化的印度素食咖哩與手工烤餅，滿足蔬食者的需求。
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="accordion-item border-2 border-[var(--background)] rounded-2xl overflow-hidden">
+                        <button class="w-full px-8 py-6 flex justify-between items-center bg-[var(--background)] hover:bg-white transition-colors" onclick="toggleAccordion(this)">
+                            <span class="text-lg font-bold">可以調整辣度嗎？</span>
+                            <svg class="accordion-icon w-6 h-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-8 py-6 text-[var(--muted)]">
+                                我們的咖哩可以根據您的口味調整辣度，從微辣到大辣皆可客製化。
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="accordion-item border-2 border-[var(--background)] rounded-2xl overflow-hidden">
+                        <button class="w-full px-8 py-6 flex justify-between items-center bg-[var(--background)] hover:bg-white transition-colors" onclick="toggleAccordion(this)">
+                            <span class="text-lg font-bold">建議事先訂位嗎？</span>
+                            <svg class="accordion-icon w-6 h-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-8 py-6 text-[var(--muted)]">
+                                為了確保您的用餐體驗，建議在尖峰時段或週末事先撥打電話預約。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 bg-[var(--background)]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-16 items-start">
+                    <div class="space-y-12">
+                        <h2 class="text-5xl font-bold">聯絡我們</h2>
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-6">
+                                <div class="w-12 h-12 bg-[var(--primary)] rounded-2xl flex items-center justify-center text-white shrink-0">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2">地址</h3>
+                                    <p class="text-[var(--muted)]">970 花蓮縣花蓮市民國路129號</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-6">
+                                <div class="w-12 h-12 bg-[var(--primary)] rounded-2xl flex items-center justify-center text-white shrink-0">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2">電話</h3>
+                                    <p class="text-[var(--muted)]">+886 3 832 2285</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-6">
+                                <div class="w-12 h-12 bg-[var(--primary)] rounded-2xl flex items-center justify-center text-white shrink-0">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2">營業時間</h3>
+                                    <p class="text-[var(--muted)]">11:00 - 14:00 / 17:00 - 21:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-8">
+                            <a href="https://www.facebook.com/alis.indian.cuisine/" target="_blank" class="inline-flex items-center gap-2 text-[var(--primary)] font-bold hover:underline">
+                                追蹤我們的 Facebook 獲取最新消息
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m12!1m3!1d3645.484!2d121.606186!3d23.9793066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34689fd08ba65627%3A0xf680f1f6421cee2b!2sAli%20%E7%9A%84%E5%8D%B0%E5%BA%A6%E7%A7%81%E6%88%BF%E6%96%99%E7%90%86!5e0!3m2!1szh-TW!2stw!4v1712621245678!5m2!1szh-TW!2stw" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 bg-[var(--foreground)] text-white/60 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-lg font-bold text-white mb-4">Ali 的印度私房料理</p>
+            <p class="mb-8">© 2026 Design by 花蓮瓊瑤打字行</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="hover:text-white transition-colors">隱私權政策</a>
+                <a href="#" class="hover:text-white transition-colors">服務條款</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all other items
+            document.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('active');
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
